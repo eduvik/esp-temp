@@ -1,0 +1,17 @@
+Flashing firmware:
+* Connect GPIO0 to GND
+* Power on
+* flash using: 
+`esptool.py --port /dev/cu.usbserial-A50285BI  --baud 115200 erase_flash`
+Cycle power
+`esptool.py --port /dev/cu.usbserial-A50285BI  --baud 115200 write_flash --flash_size=16m 0 esp8266-20161110-v1.8.6.bin`
+* Disconnect GPIO0 from GND	
+
+import network
+wlan=network.WLAN(network.STA_IF)
+wlan.connect(SSID, password)
+wlan.ifconfig()
+
+
+need to prevent battery dropping below about 3V; will need to implement deep sleep
+via code when voltage threshold reached
